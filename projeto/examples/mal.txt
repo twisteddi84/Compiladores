@@ -1,0 +1,56 @@
+use "grades.da"; # Processed in compile time!
+use "physics.da"; # Processed in compile ti
+
+NMEC n;
+string name;
+Grade g;
+
+n = "123"; # Atribuir uma string a um NMEC, o que é semântico errado
+name = 123; # Atribuir um inteiro a uma string, o que é semântico errado
+g = "10"; # Atribuir uma string a uma Grade, o que é semântico errado
+
+write string(n,10), string(name,30), string(g,10);
+
+integer N = "four"; # Tentativa de atribuir uma string a um integer
+list[NMEC] nmecs = new list[NMEC];
+list[string] names = new list[string];
+list[Grade] grades = new list[Grade];
+integer i;
+
+for i = 1 to N do 
+   read "NMEC: " >> nmecs; # Faltando a multiplicação por nmec
+   read "Name: " >> names;
+   real(read "Grade: ") >> grades; # Faltando a multiplicação por val
+end;
+
+writeln string("NMEC:",10), string("Name",30), string("Grade:",10);
+for i = 1 to length(nmecs) do 
+   writeln string(nmecs[i],10), string(names[i],30), string(grades[i],10);
+end;
+
+Length l;
+Time t;
+Velocity v;
+
+l = "10*meter"; # Atribuir uma string a uma Length
+t = "2*second"; # Atribuir uma string a um Time
+v = l/t;      
+
+l = real(read "Distance: "); # Faltando a multiplicação por meter
+t = real(read "Time: "); # Faltando a multiplicação por second
+v = l/t;
+writeln "Velocity: ", v;
+
+n = integer(read "NMEC: ") / nmec;
+name = read "Name: ";
+g = real(read "Grade: ") / val;
+
+# Uso incorreto do operador de subtração onde deveria haver uma atribuição
+l - 10*meter;
+t - 2*second;
+v = l/t;
+
+l = real(read "Distance: ") * meter;
+t = real(read "Time: ") * second;
+v = l/t;
+writeln "Velocity: ", v;

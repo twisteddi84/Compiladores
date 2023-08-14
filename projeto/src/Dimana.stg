@@ -1,0 +1,100 @@
+group Dimana;
+
+module(name, statements) ::= <<
+import java.util.*;
+import java.io.*;
+
+public class <name> {
+    public static void main(String[] args) {
+        <statements; separator="\n">
+    }
+}>>
+
+statement(s) ::= << 
+<if(s.dimensionDef)>dimensionDef(d)<endif>
+<if(s.unitDef)>unitDef(d)<endif>
+<if(s.varInicialization)>varInicialization(d)<endif>
+<if(s.use)>use(d)<endif>
+>>
+
+dimensionDef(type, assignament) ::= <<
+<type> <assignament>
+>>
+
+use(info, arr_class) ::= <<
+System.out.println(<info>);
+>>
+
+unitDef(id, expr1, expr2) ::= <<
+<id> <expr1> = <expr2>;
+>>
+
+forLoop(id, expr1, expr2, statements) ::= <<
+for (<id> = <expr1>; <id> \<= <expr2>; <id>++) {
+    <statements; separator="\n">
+}
+>>
+
+conditional(expr, trueStatements, elseStatements) ::= <<
+if (<expr>) {
+    <trueStatements; separator="\n">
+}
+else {
+    <elseStatements; separator="\n">
+}
+>>
+
+
+list_append(id, expr, label) ::= <<
+System.out.println(<label>);
+<id>.add(<expr>);
+>>
+
+read(expr, label) ::= <<
+System.out.println(<label>);
+<expr> = new java.util.Scanner(System.in).nextLine();
+>>
+
+varInit(type, id, init) ::= <<
+<type> <id> <init>;
+>>
+
+assignment(id, init, sout) ::= <<
+<if(init)>
+<id><init>
+<else>
+<if (sout)>
+System.out.println(<sout>);
+<id>
+<else>
+<id>
+<endif>
+<endif>
+>>
+
+dimension(sout) ::= <<
+<sout>;
+>>
+
+read_cast (type,var,dimension,temp) ::= <<
+System.out.print("<var>");
+<temp> = new java.util.Scanner(System.in).next<type>();
+>>
+
+cast (type, expr) ::= <<
+<type>(<expr>)
+>>
+
+init(expr) ::= << = <expr> >>
+
+write(value) ::= <<System.out.println(<value>); >>
+
+writeln(value) ::= <<System.out.println(<value>); >>
+
+number(value) ::= << "<value>" >>
+
+multDiv(e1, op, e2) ::= <<
+<e1><op><e2>
+>>
+
+

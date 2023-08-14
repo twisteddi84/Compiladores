@@ -1,0 +1,8 @@
+#!/bin/bash
+antlr4 Hello.g4
+antlr4-build
+antlr4-visitor Hello nome_Visitor String
+antlr4-build
+antlr4-main -i -v nome_Visitor
+antlr4-build
+antlr4-run

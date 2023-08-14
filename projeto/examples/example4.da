@@ -1,0 +1,15 @@
+use "physics.da"; # Processed in compile time!
+
+Length x;
+Length y;
+string TestString;
+
+x = 10*meter; 
+y = 5*meter; 
+integer TestInteger = 5;
+
+if x > y then
+    writeln "x is greater than y.";
+else
+    writeln "x is not greater than y.";
+end;

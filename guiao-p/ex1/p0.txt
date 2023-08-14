@@ -1,0 +1,5 @@
+print " Bom dia !"
+t1 : " Miguel "
+print t1
+print "a"+"b"
+print "abc"-"b"

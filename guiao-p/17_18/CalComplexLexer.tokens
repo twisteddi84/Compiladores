@@ -1,0 +1,13 @@
+T__0=1
+T__1=2
+T__2=3
+Complexo=4
+REAL=5
+IMAG=6
+OP=7
+ID=8
+WS=9
+Comment=10
+'=>'=1
+';'=2
+'output'=3
